@@ -33,7 +33,9 @@ class ProdutosController extends Controller
      */
     public function store(StoreProdutosRequest $request)
     {
-        //
+        $data = $request->validated();
+        $produtos = $this->produtos->create($data);
+        return response()->json(data:$produtos);
     }
 
     /**
