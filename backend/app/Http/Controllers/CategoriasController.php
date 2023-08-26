@@ -18,7 +18,8 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        return response()->json($this->categorias);
+        $categorias = $this->categorias->with('produtos')->get();
+        return response()->json($this->categorias->get());
 
     }
 
@@ -30,38 +31,37 @@ class CategoriasController extends Controller
     {
         $data = $request->validated();
         $categorias = $this->categorias->create($data);
-        return response()->json(data:$categorias);
+        return response()->json($categorias);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Categorias $categorias)
+    public function show($id)
     {
-        //
+        $categorias = $this->categorias->with('categorias')->find($id);
+        return response()->json($categorias);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categorias $categorias)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoriasRequest $request, Categorias $categorias)
+    public function update(UpdateCategoriasRequest $request, Categorias $id)
     {
-        //
+        $data = $request->validated();
+        $categoria = $this->categorias->findOrFail($id);
+        $categoria->update($data);
+        return response()->json($categoria);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categorias $categorias)
+    public function destroy(int $id)
     {
-        //
+        $categoria = $this->categorias->newQuery()->findOrFail($id);
+        $categoria->delete();
+        return 'categoria deletado';
     }
 }

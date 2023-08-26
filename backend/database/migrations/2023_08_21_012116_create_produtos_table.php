@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string(column:'nome');
             $table->string(column:'imagem');
-            $table->string(column:'dimensão');
+            $table->integer(column:'quantidade');
             $table->string(column:'descrição');
-            $table->integer(column:'identificação');
+            //$table->string(column:'categoria');
+            $table->unsignedBigInteger('categoria_id');
             $table->timestamps();
+
+            $table->foreign('categoria_id')->references('id')->on('categorias')->cascadeOnDelete();
         });
     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProdutosRequest;
 use App\Http\Requests\UpdateProdutosRequest;
 use App\Models\Produtos;
+use Illuminate\Support\Facades\Storage;
+use PhpOption\Option;
 
 class ProdutosController extends Controller
 {
@@ -23,7 +25,8 @@ class ProdutosController extends Controller
     public function index()
     
     {
-        return response()->json($this->produtos);
+        $produtos = $this->produtos->with('categorias')->get();
+        return response()->json($this->produtos->get());
     }
 
 
@@ -34,33 +37,50 @@ class ProdutosController extends Controller
     public function store(StoreProdutosRequest $request)
     {
         $data = $request->validated();
+        if($request->hasFile('imagem')){
+            $path = $request->file('imagem')->store('imagem', 'public');
+            $data['imagem'] = url('storage/' . $path);
+           // $data['imagem'] = $request->file('imagem')->store('imagem','public');
+        }
         $produtos = $this->produtos->create($data);
-        return response()->json(data:$produtos);
+        return response()->json($produtos);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Produtos $produtos)
+    public function show($id)
     {
-        //
+        $produtos = $this->produtos->with('categorias')->find($id);
+        return response()->json($produtos);
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdutosRequest $request, Produtos $produtos)
+    public function update(UpdateProdutosRequest $request, int $id)
     {
-        //
+        $data = $request->validated();
+        $produto = $this->produtos->findOrFail($id);
+        if($request->hasFile('imagem')){
+            Storage::disk('public')->delete($produto->imagem);
+            $path = $request->file('imagem')->store('imagem', 'public');
+            $data['imagem'] = url('storage/' . $path);
+            //$data['imagem'] = $request->file('imagem')->store('imagem', 'public');
+        }
+        $produto->update($data);
+        return response()->json($produto);
     }
-
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produtos $produtos)
+    public function destroy(int $id)
     {
-        //
+        $produto = $this->produtos->newQuery()->findOrFail($id);
+        Storage::disk('public')->delete($produto->imagem);
+        $produto->delete();
+        return 'produto deletado';
     }
 
 }

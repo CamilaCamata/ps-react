@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class StoreProdutosRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreProdutosRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,12 @@ class StoreProdutosRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome' => 'required',
+            'imagem'=> ['required','mimes:png,jpg,jpeg,webp'],
+            'quantidade'=>'required',
+            'descrição'=>'required',
+            //'categoria'=>'required',
+            'categoria_id'=>['required','integer'],
         ];
     }
 }
