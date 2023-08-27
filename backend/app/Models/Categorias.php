@@ -10,7 +10,6 @@ use App\Models\Produtos;
 class Categorias extends Model
 {
     use HasFactory;
-    //protected $table = 'categorias';
 
     protected $fillable = ['nome'];
 

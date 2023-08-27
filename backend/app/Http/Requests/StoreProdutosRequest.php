@@ -27,7 +27,6 @@ class StoreProdutosRequest extends FormRequest
             'imagem'=> ['required','mimes:png,jpg,jpeg,webp'],
             'quantidade'=>'required',
             'descrição'=>'required',
-            //'categoria'=>'required',
             'categorias_id'=>['required','integer'],
         ];
     }

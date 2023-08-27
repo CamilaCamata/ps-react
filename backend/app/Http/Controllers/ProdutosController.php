@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProdutosRequest;
-//use App\Htpp\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProdutosRequest;
 use App\Models\Produtos;
+use App\Models\Categorias;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PhpOption\Option;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 
 class ProdutosController extends Controller
 {
@@ -23,13 +26,16 @@ class ProdutosController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     
     {
-        $produtos = $this->produtos->with('categorias')->get();
+        $produtos = $this->produtos->with('categorias')->when($request->search, function ($query) use ($request){
+            $query->where('nome','like','%' .$request->search. '%')->orWhere('categorias_id',$request->search);
+        });
+        //->paginate(11);
+        //$produtos = $this->produtos->with('categorias')->get();
         return response()->json($produtos);
 
-        //return response()->json($this->produtos->get());
     }
 
 
@@ -62,7 +68,7 @@ class ProdutosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdutosRequest $request, int $id)
+    public function update(UpdateProdutosRequest $request, Produtos $id)
     {
         $data = $request->validated();
         $produto = $this->produtos->findOrFail($id);

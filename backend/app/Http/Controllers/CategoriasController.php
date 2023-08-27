@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoriasRequest;
 use App\Http\Requests\UpdateCategoriasRequest;
 use App\Models\Categorias;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\PaginatedResourceResponse;
 
-//use App\Models\Categorias;
 
 class CategoriasController extends Controller
 {
@@ -18,12 +20,15 @@ class CategoriasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categoria = $this->categoria->with('produtos')->get();
-        //$this->categorias->with('produtos')->get();
+        $categoria = $this->categoria->with('produtos')->when($request->search, function ($query) use ($request){
+            $query->where('nome','like','%' .$request->search. '%');
+        });
+
+        //->paginate(11);
+        //$categoria = $this->categoria->with('produtos')->get();
         return response()->json($categoria);
-        //return response()->json($this->categorias->get());
 
     }
 
