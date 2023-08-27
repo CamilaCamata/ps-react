@@ -50,7 +50,6 @@ class ProdutosController extends Controller
         if($request->hasFile('imagem')){
             $path = $request->file('imagem')->store('imagem', 'public');
             $data['imagem'] = url('storage/' . $path);
-           // $data['imagem'] = $request->file('imagem')->store('imagem','public');
         }
         $produtos = $this->produtos->create($data);
         return response()->json($produtos);
@@ -77,7 +76,6 @@ class ProdutosController extends Controller
             Storage::disk('public')->delete($produto->imagem);
             $path = $request->file('imagem')->store('imagem', 'public');
             $data['imagem'] = url('storage/' . $path);
-            //$data['imagem'] = $request->file('imagem')->store('imagem', 'public');
         }
         $produto->update($data);
         return response()->json($produto);
