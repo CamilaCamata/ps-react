@@ -18,9 +18,9 @@ class Produtos extends Model
         'quantidade',
         'descrição',
         //'categoria',
-        'categoria_id',
+        'categorias_id',
     ];
     public function categorias(){
-        return $this->belongsTo(Categorias::class,'categoria_id');
+        return $this->belongsTo(Categorias::class,'categorias_id');
     }
 }

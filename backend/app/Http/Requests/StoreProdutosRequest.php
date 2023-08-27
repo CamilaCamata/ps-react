@@ -28,7 +28,7 @@ class StoreProdutosRequest extends FormRequest
             'quantidade'=>'required',
             'descrição'=>'required',
             //'categoria'=>'required',
-            'categoria_id'=>['required','integer'],
+            'categorias_id'=>['required','integer'],
         ];
     }
 }

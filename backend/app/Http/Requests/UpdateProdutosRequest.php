@@ -27,7 +27,7 @@ class UpdateProdutosRequest extends FormRequest
             'quantidade'=>'required',
             'descrição'=>'required',
             //'categoria'=>'required',
-            'categoria_id'=>'required',
+            'categorias_id'=>'required',
         ];
     }
 }
