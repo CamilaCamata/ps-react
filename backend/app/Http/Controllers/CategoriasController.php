@@ -6,20 +6,24 @@ use App\Http\Requests\StoreCategoriasRequest;
 use App\Http\Requests\UpdateCategoriasRequest;
 use App\Models\Categorias;
 
+//use App\Models\Categorias;
+
 class CategoriasController extends Controller
 {
-    private Categorias $categorias;
+    private Categorias $categoria;
 
-    public function __construct(Categorias $categorias){
-        $this->categorias = $categorias;
+    public function __construct(Categorias $categoria){
+        $this->categoria = $categoria;
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categorias = $this->categorias->with('produtos')->get();
-        return response()->json($this->categorias->get());
+        $categoria = $this->categoria->with('produtos')->get();
+        //$this->categorias->with('produtos')->get();
+        return response()->json($categoria);
+        //return response()->json($this->categorias->get());
 
     }
 
@@ -30,8 +34,8 @@ class CategoriasController extends Controller
     public function store(StoreCategoriasRequest $request)
     {
         $data = $request->validated();
-        $categorias = $this->categorias->create($data);
-        return response()->json($categorias);
+        $categoria = $this->categoria->create($data);
+        return response()->json($categoria);
     }
 
     /**
@@ -39,8 +43,8 @@ class CategoriasController extends Controller
      */
     public function show($id)
     {
-        $categorias = $this->categorias->with('categorias')->find($id);
-        return response()->json($categorias);
+        $categoria = $this->categoria->with('produtos')->find($id);
+        return response()->json($categoria);
     }
 
 
@@ -50,7 +54,7 @@ class CategoriasController extends Controller
     public function update(UpdateCategoriasRequest $request, Categorias $id)
     {
         $data = $request->validated();
-        $categoria = $this->categorias->findOrFail($id);
+        $categoria = $this->categoria->findOrFail($id);
         $categoria->update($data);
         return response()->json($categoria);
     }
@@ -60,7 +64,7 @@ class CategoriasController extends Controller
      */
     public function destroy(int $id)
     {
-        $categoria = $this->categorias->newQuery()->findOrFail($id);
+        $categoria = $this->categoria->newQuery()->findOrFail($id);
         $categoria->delete();
         return 'categoria deletado';
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProdutosRequest;
+//use App\Htpp\Controllers\Controller;
 use App\Http\Requests\UpdateProdutosRequest;
 use App\Models\Produtos;
 use Illuminate\Support\Facades\Storage;
@@ -26,7 +27,9 @@ class ProdutosController extends Controller
     
     {
         $produtos = $this->produtos->with('categorias')->get();
-        return response()->json($this->produtos->get());
+        return response()->json($produtos);
+
+        //return response()->json($this->produtos->get());
     }
 
 
