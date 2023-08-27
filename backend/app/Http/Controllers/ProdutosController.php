@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\Use;
 use App\Http\Requests\StoreProdutosRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateProdutosRequest;
 use App\Models\Produtos;
 use App\Models\Categorias;
+use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PhpOption\Option;
@@ -27,13 +29,12 @@ class ProdutosController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    
     {
         $produtos = $this->produtos->with('categorias')->when($request->search, function ($query) use ($request){
             $query->where('nome','like','%' .$request->search. '%')->orWhere('categorias_id',$request->search);
-        });
-        //->paginate(11);
-        //$produtos = $this->produtos->with('categorias')->get();
+        })
+        ->paginate(11);
+
         return response()->json($produtos);
 
     }

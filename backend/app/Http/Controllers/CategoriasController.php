@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\User;
 use App\Http\Requests\StoreCategoriasRequest;
 use App\Http\Requests\UpdateCategoriasRequest;
 use App\Models\Categorias;
@@ -24,10 +25,9 @@ class CategoriasController extends Controller
     {
         $categoria = $this->categoria->with('produtos')->when($request->search, function ($query) use ($request){
             $query->where('nome','like','%' .$request->search. '%');
-        });
+        })
 
-        //->paginate(11);
-        //$categoria = $this->categoria->with('produtos')->get();
+        ->paginate(11);
         return response()->json($categoria);
 
     }
