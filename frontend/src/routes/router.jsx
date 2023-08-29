@@ -3,7 +3,7 @@ import {Navigate} from "react-router-dom";
 import DefaultLayout from "../pages/layouts/DefaultLayout";
 import Dashboard from "../pages/Private/Dashboard";
 import Users from "../pages/Private/Users";
-import Categories from "../pages/Private/Produtos";
+import Product from "../pages/Private/Produtos";
 import GuestLayout from "../pages/layouts/GuestLayout";
 import Login from "../pages/Public/Login";
 import Signup from "../pages/Public/Signup";
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
         element: <Users />,
       },
       {
-        path: '/categories',
-        element: <Categories />,
+        path: '/product',
+        element: <Product />,
       },
     ]
   },
