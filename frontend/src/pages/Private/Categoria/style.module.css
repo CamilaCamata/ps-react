@@ -1,4 +1,4 @@
-.product > h1{
+.category > h1{
     font-size: 1.5rem;
     margin:0;
 }
@@ -17,7 +17,7 @@
     vertical-align: middle;
   }
 
-.playerImage {
+.categoryImage {
   max-width: 150px;
   max-height: 200px;
 }

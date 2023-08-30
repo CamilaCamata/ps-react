@@ -76,7 +76,9 @@ const DefaultLayout = () => {
         <aside className={`collapse d-lg-inline-block ${asideVisible ? 'show' : ''}`}>
           <Link to="/dashboard" style={{fontWeight: "bold"}}>Dashboard</Link>
           <Link to="/users" style={{fontWeight: "bold"}}>Users</Link>
-          <Link to="/player" style={{fontWeight: "bold"}}>Product</Link>
+          <Link to="/product" style={{fontWeight: "bold"}}>Product</Link>
+          <Link to="/category" style={{fontWeight: "bold"}}>Category</Link>
+
         </aside>
         <div className="container-fluid mt-2 overflow overflow-x-auto">
           <header>
