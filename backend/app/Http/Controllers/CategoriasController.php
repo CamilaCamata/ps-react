@@ -56,7 +56,7 @@ class CategoriasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoriasRequest $request, Categorias $id)
+    public function update(UpdateCategoriasRequest $request, int $id)
     {
         $data = $request->validated();
         $categoria = $this->categoria->findOrFail($id);

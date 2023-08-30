@@ -24,7 +24,7 @@ class StoreProdutosRequest extends FormRequest
     {
         return [
             'nome' => 'required',
-            'imagem'=> ['required','mimes:png,jpg,jpeg,webp'],
+            'imagem'=> 'image|mimes:png,jpg,jpeg,webp',
             'quantidade'=>'required',
             'descrição'=>'required',
             'categorias_id'=>['required','integer'],

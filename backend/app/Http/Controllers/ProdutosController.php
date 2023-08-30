@@ -68,7 +68,7 @@ class ProdutosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdutosRequest $request, Produtos $id)
+    public function update(UpdateProdutosRequest $request, int $id)
     {
         $data = $request->validated();
         $produto = $this->produtos->findOrFail($id);
