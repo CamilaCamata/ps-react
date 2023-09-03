@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik+Iso&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+:root{
+  --light: rgb(252, 249, 249);
+  --dark: rgb(66, 62, 39);
+  --gray: rgb(180, 105, 105);
+  --first: rgba(61, 60, 58, 0.945);
+  --secound: rgb(52, 46, 54);
+  --third: #a862a5;
+  --fourth:#67607c;
+  --fifth: #0f05a000;
+  --sixth: #1b191d;
+  --seventh:#916887;
+  --eigth:#1e1e22;
+  --ninth: rgb(55, 55, 58);
+  --tenth: rgb(63, 63, 61);
+  --eleventh: #363534;
+  --twelfth:rgb(30, 30, 32);
+  --thirteenth:rgb(34, 32, 36);
+}
+
+.dark{
+  --light: rgb(20, 3, 3);
+  --dark: black;
+  --gray: rgb(22, 21, 21);
+  --first: rgb(19, 31, 107);
+  --secound: rgb(100, 43, 117);
+  --third: #2a0467;
+  --fourth:#110458;
+  --fifth: #0f05a000;
+  --sixth: #020005;
+  --seventh:#9e4784;
+  --eigth:#080618;
+  --ninth: rgba(3,0,61,1);
+  --tenth: rgba(50,0,57,1);
+  --eleventh: #0f020f;
+  --twelfth:rgb(12, 6, 117);
+  --thirteenth:rgb(65, 11, 115);
+
+}
+
+
+
+.productspage{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family:  "Ubuntu", sans-serif;
+  color: var(--light);
+  background: linear-gradient(179.4deg, var(--first) -16.9%, var(--secound) 119.9%);
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.productspage ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.productspage a{
+  color:var(--light);
+  text-decoration: none;
+  font-family:  "Ubuntu", sans-serif;
+
+}
+
+
+.productspage footer {
+  margin-top: auto;
+  width: 100%;
+  color: var(--light);
+  align-items: center;
+  justify-content: center;
+}
+
+
+.productspage h1 {
+  color: var(--light);
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+
+
+.wrapper{
+  margin: 2rem;
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit,minmax(16rem,18rem));
+  justify-content: center;
+  transition: all 0.5s ease;
+  
+  
+}
+
+@media screen and (max-width: 660px){
+    .wrapper{
+      grid-template-columns: 1fr;
+      
+    }
+
+    .nav_item{
+      display: none;
+    }
+}
