@@ -51,7 +51,7 @@ export default function Footer(props){
         </div>
     
         <div className={style.copyright}>
-           @ 2023, Feito com ❤️ por Camila Camata Crespo
+           @ 2023, por Camila Camata Crespo
         </div>
     
        </div>

@@ -17,6 +17,7 @@ import {toast} from "react-toastify";
 import Pagination from "../../../components/Layout/Pagination";
 
 
+
 const INITIAL_DATA = {
     total: 0,
     current_page: 1,
@@ -159,7 +160,7 @@ export default function ProductsPage(){
             crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <Navbar
-        logo="http://127.0.0.1:8000/storage/imagem/pgESqf24BPeW7YDq4K0BYGicS1FlkHzXEDh5oUfU.jpg"
+        logo="http://127.0.0.1:8000/storage/imagem/lavdrrPAu4DMtii5EpkmX6RjXvRdShdrm6582vKJ.jpg"
         submit={handleFilters}
         change={(e) =>
             setFilters({ ...filters, search: e.target.value })
@@ -190,14 +191,10 @@ export default function ProductsPage(){
             </NavItems>
 
 
-            <NavItems
-            link="#"
-            icon="Temas">
-            
-            </NavItems>
-
 
     </Navbar>
+
+
 
     {!isLoading && (
             <>
@@ -206,15 +203,19 @@ export default function ProductsPage(){
                   <span className="visually-hidden">Loading...</span>
                 </div>
               )}
+
+
+
               {!isFiltering && (
                 <>
                   <Pagination
                     onPaginate={handlePagination}
                     showOnBottom={!isPaginating && tableData.data.length > 0}
                     showOnTop={tableData.data.length > 0}
-                    paginateData={tableData}
+                    paginateData={tableData}   
                   >
-                    
+
+
                     {!isPaginating && (
                         <div className={style.wrapper}>
 
@@ -233,6 +234,8 @@ export default function ProductsPage(){
                     
                         </div>
                     )}
+     
+  
                     {isPaginating && (
                       <div className="spinner-border" role="status">
                         <span className="visually-hidden">Loading...</span>
@@ -249,22 +252,22 @@ export default function ProductsPage(){
             </>
           )}
 
-       
+
 
         <footer>
     <FooterM
-    name="Nerd Stationer’s"
-    slogan="The best Geek Stationer's"
+    name="Nerd Stationer's"
+    slogan=""
     social1="fa-brands fa-instagram"
     social2="fa-brand fa-twitter"
     social3="fa-brands fa-linkedin-in"
     link1="#"
     link2="#"
     link3="#"
-    empresa1="Geek Stationer's"
-    empresa2="Devolução e Trocas"
-    parceria1="Kalunga"
-    parceria2="Submarino"></FooterM>
+    empresa1="Missão"
+    empresa2="Valores"
+    parceria1="Tilibra"
+    parceria2="Leonora"></FooterM>
   </footer>
     </div>
     )

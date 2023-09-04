@@ -10,15 +10,15 @@
 
 :root{
   --light: rgb(252, 249, 249);
-  --dark: rgb(66, 62, 39);
-  --gray: rgb(180, 105, 105);
-  --first: rgba(61, 60, 58, 0.945);
-  --secound: rgb(52, 46, 54);
-  --third: #a862a5;
-  --fourth:#67607c;
-  --fifth: #0f05a000;
-  --sixth: #1b191d;
-  --seventh:#916887;
+  --dark: rgb(12, 12, 11);
+  --gray: rgb(64, 200, 224);
+  --first: rgba(207, 141, 55, 0.945);
+  --secound: rgb(212, 164, 32);
+  --third: #000000;
+  --fourth:#000000;
+  --fifth: #000000;
+  --sixth: #020202;
+  --seventh:#000000;
   --eigth:#1e1e22;
   --ninth: rgb(55, 55, 58);
   --tenth: rgb(63, 63, 61);
